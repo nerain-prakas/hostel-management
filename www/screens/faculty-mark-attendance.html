@@ -1,0 +1,57 @@
+<!-- Faculty Mark Attendance Screen -->
+<div class="page-header">
+    <div class="header-top">
+        <h2>Mark Attendance</h2>
+    </div>
+    <div class="breadcrumb">Home &gt; Attendance</div>
+</div>
+
+<div class="content-area">
+    <!-- Subject & Date Selection -->
+    <div class="filter-section">
+        <div class="form-group">
+            <label>Select Subject</label>
+            <select id="mark-subject" class="custom-select">
+                <option value="Physics">Physics</option>
+                <option value="Applied Math">Applied Math</option>
+                <option value="Computer Science">Computer Science</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="mark-date" class="custom-input">
+        </div>
+    </div>
+
+    <!-- Student List -->
+    <div class="section-title">Student List</div>
+    <div class="attendance-table-container">
+        <div class="attendance-table-header">
+            <span>Student Details</span>
+            <span>Status</span>
+        </div>
+        <div class="attendance-list" id="student-marking-list">
+            <!-- Skeletons injected here -->
+        </div>
+    </div>
+
+    <button type="button" id="save-attendance-btn" class="btn-primary full-width">
+        <span id="save-btn-text">Save Attendance</span>
+        <span id="save-btn-spinner" class="spinner" style="display:none"></span>
+    </button>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#faculty-dashboard" class="nav-item">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+    </a>
+    <a href="#faculty-mark-attendance" class="nav-item active">
+        <i class="icon">📝</i>
+        <span>Attendance</span>
+    </a>
+    <a href="#faculty-approve-leave" class="nav-item">
+        <i class="icon">🕒</i>
+        <span>Leave Requests</span>
+    </a>
+</nav>

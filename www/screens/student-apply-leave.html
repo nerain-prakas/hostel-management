@@ -1,0 +1,68 @@
+<!-- Student Apply Leave Screen -->
+<div class="page-header">
+    <div class="header-top">
+        <h2>Apply for Leave</h2>
+    </div>
+    <div class="breadcrumb">Home &gt; Apply Leave</div>
+</div>
+
+<div class="content-area">
+    <form id="leave-form" class="form-container">
+        <div class="form-group">
+            <label>Leave Type</label>
+            <select id="leave-type" class="custom-select" required>
+                <option value="">Select Type</option>
+                <option value="Medical">Medical</option>
+                <option value="Personal">Personal</option>
+                <option value="Emergency">Emergency</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>From Date</label>
+                <input type="date" id="leave-from" class="custom-input" required>
+            </div>
+            <div class="form-group">
+                <label>To Date</label>
+                <input type="date" id="leave-to" class="custom-input" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Reason for Leave</label>
+            <textarea id="leave-reason" class="custom-textarea" rows="4" placeholder="Explain why you need leave..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Attachments (Optional)</label>
+            <input type="file" id="leave-file" class="custom-file-input">
+            <small class="text-muted">Upload medical certificate if applicable.</small>
+        </div>
+
+        <button type="submit" id="submit-leave-btn" class="btn-primary full-width">
+            <span id="btn-text">Submit Application</span>
+            <span id="btn-spinner" class="spinner" style="display:none"></span>
+        </button>
+    </form>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#student-dashboard" class="nav-item">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+    </a>
+    <a href="#student-attendance" class="nav-item">
+        <i class="icon">📊</i>
+        <span>Attendance</span>
+    </a>
+    <a href="#student-apply-leave" class="nav-item active">
+        <i class="icon">📝</i>
+        <span>Apply Leave</span>
+    </a>
+    <a href="#student-leave-status" class="nav-item">
+        <i class="icon">🕒</i>
+        <span>Status</span>
+    </a>
+</nav>

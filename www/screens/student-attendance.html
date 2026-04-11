@@ -1,0 +1,60 @@
+<!-- Student Attendance View -->
+<div class="page-header">
+    <div class="header-top">
+        <h2>Attendance Report</h2>
+    </div>
+    <div class="breadcrumb">Home &gt; Attendance</div>
+</div>
+
+<div class="content-area">
+    <!-- Month Selector -->
+    <div class="filter-section">
+        <label for="month-select">Select Month</label>
+        <select id="month-select" class="custom-select">
+            <option value="2026-04">April 2026</option>
+            <option value="2026-03">March 2026</option>
+            <option value="2026-02">February 2026</option>
+            <option value="2026-01">January 2026</option>
+        </select>
+    </div>
+
+    <!-- Attendance Table -->
+    <div class="report-card">
+        <div class="report-header">
+            <span>Subject</span>
+            <span>Percentage</span>
+        </div>
+        <div class="report-body" id="attendance-list">
+            <!-- Skeletons will be injected here -->
+        </div>
+    </div>
+
+    <!-- Summary Legend -->
+    <div class="legend-box">
+        <div class="legend-item">
+            <span class="dot green"></span> 75% or above (Safe)
+        </div>
+        <div class="legend-item">
+            <span class="dot red"></span> Below 75% (Shortage)
+        </div>
+    </div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#student-dashboard" class="nav-item">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+    </a>
+    <a href="#student-attendance" class="nav-item active">
+        <i class="icon">📊</i>
+        <span>Attendance</span>
+    </a>
+    <a href="#student-apply-leave" class="nav-item">
+        <i class="icon">📝</i>
+        <span>Apply Leave</span>
+    </a>
+    <a href="#student-leave-status" class="nav-item">
+        <i class="icon">🕒</i>
+        <span>Status</span>
+    </a>
+</nav>

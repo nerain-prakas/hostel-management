@@ -1,0 +1,54 @@
+<!-- Admin Settings Screen -->
+<div class="page-header">
+    <div class="header-top">
+        <h2>System Settings</h2>
+    </div>
+    <div class="breadcrumb">Home &gt; Settings</div>
+</div>
+
+<div class="content-area">
+    <form id="settings-form" class="form-container">
+        <div class="form-group">
+            <label>Minimum Attendance Threshold (%)</label>
+            <input type="number" id="min-percent" class="custom-input" min="0" max="100" required>
+        </div>
+        <div class="form-group">
+            <label>Academic Year</label>
+            <input type="text" id="academic-year" class="custom-input" placeholder="e.g. 2025-2026" required>
+        </div>
+        <div class="form-group flex-row">
+            <label>Enable Attendance Alerts</label>
+            <label class="switch">
+                <input type="checkbox" id="alerts-enabled" class="attendance-check">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>System Maintenance Mode</label>
+            <label class="switch">
+                <input type="checkbox" id="maintenance-mode" class="attendance-check">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <button type="submit" id="save-settings-btn" class="btn-primary full-width">
+            <span id="settings-btn-text">Save Settings</span>
+            <span id="settings-btn-spinner" class="spinner" style="display:none"></span>
+        </button>
+    </form>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#admin-dashboard" class="nav-item">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+    </a>
+    <a href="#admin-manage-users" class="nav-item">
+        <i class="icon">👤</i>
+        <span>Users</span>
+    </a>
+    <a href="#admin-settings" class="nav-item active">
+        <i class="icon">⚙️</i>
+        <span>Settings</span>
+    </a>
+</nav>

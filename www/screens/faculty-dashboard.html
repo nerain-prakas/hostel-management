@@ -1,0 +1,58 @@
+<!-- Faculty Dashboard -->
+<div class="page-header">
+    <div class="header-top">
+        <h2>Faculty Portal</h2>
+    </div>
+    <div class="breadcrumb">Home &gt; Dashboard</div>
+</div>
+
+<div class="content-area">
+    <!-- Welcome Section -->
+    <div class="welcome-banner">
+        <div class="welcome-text">
+            <h1>Welcome, <span id="faculty-name">Dr. Smith</span></h1>
+            <p>Here is your schedule for today.</p>
+        </div>
+    </div>
+
+    <!-- Today's Schedule -->
+    <div class="section-title">Today's Classes</div>
+    <div class="schedule-list" id="faculty-schedule">
+        <!-- Skeletons will be injected here -->
+    </div>
+
+    <!-- Quick Stats / Pending Actions -->
+    <div class="stats-grid">
+        <div class="stat-card alert">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-info">
+                <span class="label">Pending Leaves</span>
+                <span class="value" id="pending-leave-count">0</span>
+            </div>
+            <a href="#faculty-approve-leave" class="btn-small">Review &rarr;</a>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <div class="stat-info">
+                <span class="label">Attendance</span>
+                <span class="value">Mark Now</span>
+            </div>
+            <a href="#faculty-mark-attendance" class="btn-small">Open &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#faculty-dashboard" class="nav-item active">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+    </a>
+    <a href="#faculty-mark-attendance" class="nav-item">
+        <i class="icon">📝</i>
+        <span>Attendance</span>
+    </a>
+    <a href="#faculty-approve-leave" class="nav-item">
+        <i class="icon">🕒</i>
+        <span>Leave Requests</span>
+    </a>
+</nav>

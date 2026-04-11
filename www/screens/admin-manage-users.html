@@ -1,0 +1,73 @@
+<!-- Admin Manage Users Screen -->
+<div class="page-header">
+    <div class="header-top">
+        <h2>User Management</h2>
+    </div>
+    <div class="breadcrumb">Home &gt; Users</div>
+</div>
+
+<div class="content-area">
+    <div class="admin-toolbar">
+        <div class="filter-group">
+            <select id="user-role-filter" class="custom-select">
+                <option value="student">Students</option>
+                <option value="faculty">Faculty</option>
+            </select>
+        </div>
+        <button id="add-user-btn" class="btn-primary btn-small">+ Add User</button>
+    </div>
+
+    <div class="user-list-container">
+        <div class="user-table-header">
+            <span>Name & Email</span>
+            <span>Status</span>
+            <span>Action</span>
+        </div>
+        <div class="user-list" id="admin-user-list">
+            <!-- User items injected here -->
+        </div>
+    </div>
+</div>
+
+<!-- Add User Modal -->
+<div id="user-modal" class="modal" style="display:none">
+    <div class="modal-content">
+        <h3>Add/Edit User</h3>
+        <form id="user-form">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="user-name" class="custom-input" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="user-email" class="custom-input" required>
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select id="user-role" class="custom-select" required>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-text" onclick="document.getElementById('user-modal').style.display='none'">Cancel</button>
+                <button type="submit" class="btn-primary">Save User</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#admin-dashboard" class="nav-item">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+    </a>
+    <a href="#admin-manage-users" class="nav-item active">
+        <i class="icon">👤</i>
+        <span>Users</span>
+    </a>
+    <a href="#admin-settings" class="nav-item">
+        <i class="icon">⚙️</i>
+        <span>Settings</span>
+    </a>
+</nav>

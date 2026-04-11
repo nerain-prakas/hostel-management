@@ -1,0 +1,310 @@
+/* Student Role Styles */
+
+.overall-attendance {
+    background: linear-gradient(135deg, #1A73E8, #1557B0);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 20px rgba(26, 115, 232, 0.3);
+}
+
+.overall-attendance .card-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.attendance-circle-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.attendance-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #fff;
+    transition: stroke-dashoffset 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.percent-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.percent-label {
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.attendance-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.stat-item .label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.stat-item .value {
+    font-weight: 600;
+}
+
+.subjects-grid {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.subject-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-left: 4px solid #1A73E8;
+}
+
+.subject-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.subject-name {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.subject-percent {
+    font-weight: bold;
+    color: #1A73E8;
+}
+
+.subject-progress-bar {
+    height: 6px;
+    background: #eee;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #1A73E8;
+    border-radius: 3px;
+}
+
+.subject-meta {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.note-icon {
+    font-size: 1.2rem;
+}
+
+.note-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-text {
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.note-date {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+/* Attendance Report Styles */
+.filter-section {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.report-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    background: #f1f3f4;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.report-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.row-safe {
+    border-left: 4px solid #2ecc71;
+}
+
+.row-shortage {
+    border-left: 4px solid #e74c3c;
+}
+
+.legend-box {
+    margin-top: 20px;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot.green { background: #2ecc71; }
+.dot.red { background: #e74c3c; }
+
+/* Leave Application Styles */
+.form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.custom-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+/* Leave Status Styles */
+.status-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stat-card .label {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-card .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.leave-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.req-id {
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #1A73E8;
+}
+
+.status-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.status-approved { background: #d4edda; color: #155724; }
+.status-pending { background: #fff3cd; color: #856404; }
+.status-rejected { background: #f8d7da; color: #721c24; }
+
+.card-body .row {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.card-body .label {
+    font-weight: 600;
+    color: #666;
+}

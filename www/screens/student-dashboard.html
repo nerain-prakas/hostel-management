@@ -1,0 +1,71 @@
+<!-- Student Dashboard -->
+<div class="page-header">
+    <div class="header-top">
+        <h2>My Dashboard</h2>
+        <div class="user-profile">
+            <span id="user-name">Loading...</span>
+            <img src="img/avatar-student.png" alt="Profile" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+        </div>
+    </div>
+    <div class="breadcrumb">Home &gt; Dashboard</div>
+</div>
+
+<div class="content-area">
+    <!-- Overall Attendance Card -->
+    <div class="dashboard-card overall-attendance">
+        <div class="card-main">
+            <div class="attendance-circle-container">
+                <div class="attendance-circle" id="overall-progress">
+                    <div class="circle-inner">
+                        <span class="percent-value" id="overall-percent">0%</span>
+                        <span class="percent-label">Overall</span>
+                    </div>
+                </div>
+            </div>
+            <div class="attendance-stats">
+                <div class="stat-item">
+                    <span class="label">Status</span>
+                    <span class="value" id="attendance-status">Checking...</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Total Subjects</span>
+                    <span class="value" id="total-subjects">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="#student-attendance" class="btn-text">View Detailed Report &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Subject Wise Attendance -->
+    <div class="section-title">Subject Wise Attendance</div>
+    <div class="subjects-grid" id="subjects-list">
+        <!-- Skeletons will be injected here via Utils.showSkeleton -->
+    </div>
+
+    <!-- Notifications/Alerts -->
+    <div class="section-title">Notifications</div>
+    <div class="notifications-list" id="notifications-list">
+        <!-- Notifications injected here -->
+    </div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#student-dashboard" class="nav-item active">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+    </a>
+    <a href="#student-attendance" class="nav-item">
+        <i class="icon">📊</i>
+        <span>Attendance</span>
+    </a>
+    <a href="#student-apply-leave" class="nav-item">
+        <i class="icon">📝</i>
+        <span>Apply Leave</span>
+    </a>
+    <a href="#student-leave-status" class="nav-item">
+        <i class="icon">🕒</i>
+        <span>Status</span>
+    </a>
+</nav>
