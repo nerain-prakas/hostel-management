@@ -4,8 +4,8 @@
  */
 
 const API_CONFIG = {
-    REAL_API: false, // Set to true to use live backend
-    BASE_URL: 'https://api.attendms.edu/v1'
+    REAL_API: true,
+    BASE_URL: 'http://localhost:8080'
 };
 
 /**
@@ -162,7 +162,7 @@ const API = {
     async login(email, password) { return this._request('/auth/login', 'POST', { email, password }); },
     async getStudentDashboard() { return this._request('/student/dashboard'); },
     async getAttendance(month) { return this._request('/student/attendance'); },
-    async submitLeave(data) { return this._request('/student/leave/submit', 'POST', data); },
+    async submitLeave(data) { return this._request('/student/leave', 'POST', data); },
     async getLeaveStatus() { return this._request('/student/leave/status'); },
     async getFacultyDashboard() { return this._request('/faculty/dashboard'); },
     async getStudentList(subject) { return this._request('/faculty/students'); },
@@ -170,7 +170,10 @@ const API = {
     async getLeaveRequests() { return this._request('/faculty/leave/requests'); },
     async approveLeave(id, status, comment) { return this._request('/faculty/leave/approve', 'POST', { id, status, comment }); },
     async getAdminStats() { return this._request('/admin/stats'); },
-    async getUsers(role) { return this._request('/admin/users'); },
+    async getUsers(role) {
+        const roleQuery = role ? `?role=${encodeURIComponent(String(role).toLowerCase())}` : '';
+        return this._request(`/admin/users${roleQuery}`);
+    },
     async saveUser(data) { return this._request('/admin/user/save', 'POST', data); },
     async deleteUser(id) { return this._request('/admin/user/delete', 'POST', { id }); },
     async saveSettings(data) { return this._request('/admin/settings/save', 'POST', data); },

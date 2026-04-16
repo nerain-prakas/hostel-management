@@ -2,6 +2,8 @@
  * Authentication Logic for AttendMS
  */
 const Auth = {
+    ROLE_KEY: 'attendms_role',
+
     /**
      * Handles the login process
      * @param {Object} credentials - Email and password
@@ -13,18 +15,37 @@ const Auth = {
 
             if (rememberMe) {
                 localStorage.setItem('attendms_token', result.token);
+                localStorage.setItem(this.ROLE_KEY, result.role);
+                sessionStorage.removeItem(this.ROLE_KEY);
             } else {
                 sessionStorage.setItem('attendms_token', result.token);
+                sessionStorage.setItem(this.ROLE_KEY, result.role);
+                localStorage.removeItem(this.ROLE_KEY);
+            }
+
+            // Accept role from either top-level response or nested user payload.
+            const role = result.role || (result.user && result.user.role);
+            if (!role) {
+                throw new Error('Login response missing role');
+            }
+
+            if (rememberMe) {
+                if (localStorage.getItem('attendms_role') !== role) {
+                    localStorage.setItem(this.ROLE_KEY, role);
+                }
+            } else if (sessionStorage.getItem('attendms_role') !== role) {
+                sessionStorage.setItem(this.ROLE_KEY, role);
             }
 
             // Route based on role
-            const role = result.role;
             if (role === 'student') {
                 await Router.navigate('#student-dashboard');
             } else if (role === 'faculty') {
                 await Router.navigate('#faculty-dashboard');
             } else if (role === 'admin') {
                 await Router.navigate('#admin-dashboard');
+            } else {
+                throw new Error('Unsupported role from login response');
             }
 
             return { success: true };
@@ -39,6 +60,8 @@ const Auth = {
     logout() {
         localStorage.removeItem('attendms_token');
         sessionStorage.removeItem('attendms_token');
+        localStorage.removeItem(this.ROLE_KEY);
+        sessionStorage.removeItem(this.ROLE_KEY);
         Router.navigate('#login');
     }
 };

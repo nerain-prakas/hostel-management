@@ -64,7 +64,7 @@ const Utils = {
     },
 
     /**
-     * Reads JWT token from localStorage
+     * Reads auth token from localStorage/sessionStorage
      * @returns {string|null} Token or null
      */
     getToken() {
@@ -72,13 +72,22 @@ const Utils = {
     },
 
     /**
-     * Parses role from JWT token
+     * Resolves role from stored login state
      * @returns {string|null} role
      */
     decodeRole() {
+        const storedRole = localStorage.getItem('attendms_role') || sessionStorage.getItem('attendms_role');
+        if (storedRole) {
+            return storedRole;
+        }
+
+        // Backward compatibility: if an old JWT token is present, decode role from payload.
         const token = this.getToken();
         if (!token) return null;
         try {
+            if (!token.includes('.')) {
+                return null;
+            }
             const base64Url = token.split('.')[1];
             const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
             const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {

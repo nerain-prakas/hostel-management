@@ -52,12 +52,17 @@ async function initStudentDashboard() {
 
     try {
         const data = await API.getStudentDashboard();
+        const overall = data.overall || {};
+        const subjects = Array.isArray(data.subjects) ? data.subjects : [];
+        const notifications = Array.isArray(data.notifications) ? data.notifications : [];
 
         // Update Profile Name (Mock extraction)
         document.getElementById('user-name').textContent = 'John Doe';
 
         // Update Overall Progress Circle
-        const overallPercent = data.overallPercent;
+        const overallPercent = Number(
+            data.overallPercent ?? overall.attendancePercent ?? 0
+        );
         const circle = document.getElementById('overall-progress');
         const percentText = document.getElementById('overall-percent');
 
@@ -69,27 +74,35 @@ async function initStudentDashboard() {
         statusEl.textContent = overallPercent >= 75 ? 'Good' : 'Shortage';
         statusEl.className = `value ${overallPercent >= 75 ? 'text-success' : 'text-danger'}`;
 
-        document.getElementById('total-subjects').textContent = data.subjects.length;
+        document.getElementById('total-subjects').textContent = subjects.length;
 
         // Render Subjects
         Utils.hideSkeleton('subjects-list');
-        container.innerHTML = data.subjects.map(sub => `
+        container.innerHTML = subjects.length ? subjects.map(sub => {
+            const subjectName = sub.name || sub.subjectName || 'Subject';
+            const percent = Number(sub.percent ?? sub.attendancePercent ?? 0);
+            const attended = Number(sub.attended ?? sub.present ?? 0);
+            const held = Number(sub.held ?? sub.total ?? 0);
+
+            return `
             <div class="subject-card">
                 <div class="subject-info">
-                    <span class="subject-name">${sub.name}</span>
-                    <span class="subject-percent">${sub.percent}%</span>
+                    <span class="subject-name">${subjectName}</span>
+                    <span class="subject-percent">${percent}%</span>
                 </div>
                 <div class="subject-progress-bar">
-                    <div class="progress-fill" style="width: ${sub.percent}%"></div>
+                    <div class="progress-fill" style="width: ${percent}%"></div>
                 </div>
                 <div class="subject-meta">
-                    <span>${sub.attended}/${sub.held} Classes</span>
+                    <span>${attended}/${held} Classes</span>
                 </div>
             </div>
-        `).join('');
+        `;
+        }).join('') : '<div class="empty-state">No attendance data found.</div>';
 
         // Render Notifications
-        notificationsContainer.innerHTML = data.notifications.map(note => `
+        if (notificationsContainer) {
+            notificationsContainer.innerHTML = notifications.length ? notifications.map(note => `
             <div class="notification-item">
                 <div class="note-icon">🔔</div>
                 <div class="note-content">
@@ -97,7 +110,8 @@ async function initStudentDashboard() {
                     <div class="note-date">${Utils.formatDate(note.date)}</div>
                 </div>
             </div>
-        `).join('');
+        `).join('') : '<div class="empty-state">No notifications.</div>';
+        }
 
     } catch (e) {
         console.error('Dashboard Load Error:', e);
@@ -117,13 +131,19 @@ async function initStudentAttendance() {
         try {
             const data = await API.getAttendance(monthSelect.value);
             Utils.hideSkeleton('attendance-list');
+            const rows = Array.isArray(data.rows) ? data.rows : (Array.isArray(data.subjects) ? data.subjects : []);
 
-            listContainer.innerHTML = data.subjects.map(sub => `
-                <div class="report-row ${sub.percent < 75 ? 'row-shortage' : 'row-safe'}">
-                    <span class="sub-name">${sub.name}</span>
-                    <span class="sub-percent">${sub.percent}%</span>
+            listContainer.innerHTML = rows.length ? rows.map((sub) => {
+                const subjectName = sub.subjectName || sub.name || 'Subject';
+                const percent = Number(sub.percent ?? sub.attendancePercent ?? 0);
+                const rowClass = percent < 75 ? 'row-shortage' : 'row-safe';
+                return `
+                <div class="report-row ${rowClass}">
+                    <span class="sub-name">${subjectName}</span>
+                    <span class="sub-percent">${percent}%</span>
                 </div>
-            `).join('');
+            `;
+            }).join('') : '<div class="empty-state">No attendance records found.</div>';
         } catch (e) {
             Utils.showToast('Error loading attendance', 'error');
         }
@@ -450,7 +470,8 @@ async function initAdminManageUsers() {
         const data = {
             name: document.getElementById('user-name').value,
             email: document.getElementById('user-email').value,
-            role: document.getElementById('user-role').value
+            role: document.getElementById('user-role').value,
+            password: document.getElementById('user-password').value.trim()
         };
 
         try {
